@@ -10,22 +10,20 @@ In Demo/IA32_flat_GCC_PC, Support_Files contains the board supporting package, a
 
 # Cross Compiler
 
-Download the [pre-built i686-elf-gcc](http://wiki.osdev.org/GCC_Cross-Compiler#Prebuilt_Toolchains) for Linux x86_64 or Windows. Extract the archive and add the directory where i686-elf-gcc exists into the environment variable PATH.
-
-For Windows users, it is also required to install [MinGW](https://sourceforge.net/projects/mingw/files/latest/download), and add MinGW\bin into PATH to run i686-elf-gcc.
-
-# Builder
-
-For Linux users, just install make. For Windows users, install [msys2](https://msys2.github.io), add msys64\usr\bin into PATH, and run "pacman -S make" in cmd.
+In Gentoo:
+USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gcc 8.1.0-r3 --libc 2.26-r6 --kernel 4.16.12 -oO /usr/portage
 
 # Build Commands
 
 ```
-git clone https://github.com/kugwa/freertos_x86_gcc_pc.git
-
+git clone https://github.com/pwasiewi/freertos_x86_gcc_pc.git
 cd freertos_x86_gcc_pc/Demo/IA32_flat_GCC_PC/Blinky_Demo
-
 make # generate build/Blinky_Demo.elf
+cp build/build/Blinky_Demo.elf iso/root/boot/
+cd iso
+./mkiso
+qemu-system-i386 -cdrom freertos.iso
+
 ```
 
 # Boot Loader
