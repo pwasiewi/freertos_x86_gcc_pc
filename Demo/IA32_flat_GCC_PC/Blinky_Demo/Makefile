@@ -24,14 +24,14 @@ SOURCE_S        :=  $(foreach dir,$(SOURCE_DIR),$(call find,$(dir),*.S))
 OBJECT          :=  $(patsubst $(SOURCE_ROOT)%,$(OBJECT_ROOT)%,$(patsubst %.c,%.o,$(SOURCE_C))) \
                     $(patsubst $(SOURCE_ROOT)%,$(OBJECT_ROOT)%,$(patsubst %.S,%.o,$(SOURCE_S)))
 
-LD              :=  i686-elf-gcc
+LD              :=  i686-unknown-linux-gnueabi-gcc
 LDFLAGS         :=  -nostdlib -Xlinker -T -Xlinker $(LDS) -Xlinker -Map=$(MAP) -Xlinker --gc-sections
 LDADD           :=  -lgcc
-CC              :=  i686-elf-gcc
+CC              :=  i686-unknown-linux-gnueabi-gcc
 CFLAGS          :=  $(INCLUDE_DIR) -D'__XEN_INTERFACE_VERSION__=0x00040400' \
                     -O0 -g3 -Wall -Wextra -c -fmessage-length=0 -march=pentium \
                     -Wno-ignored-qualifiers -mno-ms-bitfields -ffunction-sections -ffreestanding
-AS              :=  i686-elf-gcc
+AS              :=  i686-unknown-linux-gnueabi-gcc
 SFLAGS          :=  $(INCLUDE_DIR) -Wa,--gdwarf2 -Wa,-march=pentium -c
 
 .PHONY: clean
