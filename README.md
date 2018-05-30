@@ -1,6 +1,6 @@
 # About
 
-This is a FreeRTOS port on IA32 PC, which is modified from the [FreeRTOS port on Intel Galileo](http://www.freertos.org/RTOS_Intel_Quark_Galileo_GCC.html).
+This is a FreeRTOS V8.2.3 (2015) port on IA32 PC, which is modified from the [FreeRTOS port on Intel Galileo](http://www.freertos.org/RTOS_Intel_Quark_Galileo_GCC.html).
 
 # Directory Structure
 
@@ -8,10 +8,13 @@ See [FreeRTOS source code directory structure](http://www.freertos.org/a00017.ht
 
 In Demo/IA32_flat_GCC_PC, Support_Files contains the board supporting package, and the remaining directories are FreeRTOS applications.
 
-# Cross Compiler
+# Cross Compiler gcc 8.1.0
 
-In Gentoo:
-USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gcc 8.1.0-r3 --libc 2.26-r6 --kernel 4.16.12 -oO /usr/portage
+ * Install Gentoo Linux e.g. from UbuntuLiveDVD https://github.com/pwasiewi/gentools
+ * In Gentoo run: 
+ ```
+ USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gcc 8.1.0-r3 --libc 2.26-r6 --kernel 4.16.12 -oO /usr/portage
+ ```
 
 # Build Commands
 
@@ -19,7 +22,7 @@ USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gc
 git clone https://github.com/pwasiewi/freertos_x86_gcc_pc.git
 cd freertos_x86_gcc_pc/Demo/IA32_flat_GCC_PC/Blinky_Demo
 make # generate build/Blinky_Demo.elf
-cp build/build/Blinky_Demo.elf iso/root/boot/
+cp build/Blinky_Demo.elf iso/root/boot/
 cd iso
 ./mkiso
 qemu-system-i386 -cdrom freertos.iso
