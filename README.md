@@ -13,7 +13,7 @@ In Demo/IA32_flat_GCC_PC, Support_Files contains the board supporting package, a
  * Install Gentoo Linux e.g. from UbuntuLiveDVD https://github.com/pwasiewi/gentools
  * In Gentoo run: 
  ```
- USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gcc 8.1.0-r3 --libc 2.26-r6 --kernel 4.16.12 -oO /usr/portage
+ USE="-fortran nossp" crossdev --target i686-unknown-linux-gnueabi --stable  --gcc 8.1.0-r3 --libc 2.26-r7 --kernel 4.16.12 -oO /usr/portage
  ```
 
 # Build Commands
